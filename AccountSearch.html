@@ -1,0 +1,114 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Retail Banking System</title>
+<link rel="stylesheet" href="style.css">
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
+</head>
+<div class="header">
+	<h1>FedChoice Bank</h1>
+</div>
+
+<div class="navbar">
+	<a href="index.html">Home</a>
+
+	<div class="dropdown">
+		<button class="dropbtn">Customer Management</button>
+		<div class="dropdown-content">
+			<a href="createcustomer.html">Create Customer</a> <a href="#">Update
+				Customer</a> <a href="#">Delete Customer</a> <a href="#">Search
+				Customer</a>
+		</div>
+	</div>
+
+
+	<div class="dropdown">
+		<button class="dropbtn">Account Management</button>
+		<div class="dropdown-content">
+			
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button class="dropbtn">Account Operations</button>
+		<div class="dropdown-content">
+			<a href="#">Deposit Money</a> <a href="#">Withdrawl Money</a> <a
+				href="#">Transfer Money</a>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button class="dropbtn">Status Details</button>
+		<div class="dropdown-content">
+			<a href="#">Customer Status</a> <a href="#">Account Status</a> <a
+				href="#">Account statement</a>
+		</div>
+	</div>
+
+	<a href="#">Log out</a>
+</div>
+<div class="main">
+	<h2>Search Account</h2>
+	<div class="register">
+		<form>
+			<table>
+				<tr>
+					<td><label >Account ID:</label></td>
+					<td><input type="number" id="account_id" name="account_id" required="required">
+					</td>
+				</tr>
+						<tr>
+							<td><label >OR</label></td>
+						</tr>			
+				<tr>
+					<td><label class="required">Customer ID:</label></td>
+					<td><input type="number" id="customer_id" name="customer_id" required="required">
+					</td>
+				</tr>
+
+							
+				
+			</table>
+			<tr>
+				<td><input type="submit" value="Search"  /></td>
+			</tr>
+		</form>
+	</div>
+
+</div>
+
+<div class="footer">
+	<h2 style="color: yellow">About Us</h2>
+	<pre>
+  FedChoice Bank was founded on 14th June 2016 with 
+  the objective of providing with the deatil services based 
+  on Retail Banking operations. The retail internet banking 
+  of FedChoice Bank offers a plethora product and services, 
+  to carter its customers by providing certain animus services
+  with an easy volving offersand ways to do the required job 
+  without hurdling the process.</pre>
+	<h2 style="color: yellow">Services</h2>
+	<pre>
+  Retail and Customer Banking
+  Personal Internet Banking
+  Corporate Internet Banking
+  Debit and Credit card
+  </pre>
+
+	<h2 style="color: yellow">Contact Us</h2>
+	<pre>
+  Email:customer.service@fedchoice.com
+  Contact:9843568456
+  Address:Corporate Office, Madame Cana road,
+  Mumbai, Maharashtra.
+  </pre>
+
+</div>
+
+</body>
+</html>

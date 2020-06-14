@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Deposit Money</title>
+</head>
+<body>
+<H1> Deposit Money</H1>
+<form  action="http://localhost:8080/Retail_Banking_System/Deposit_controller" method="post">
+<input type="hidden" name="source" value="deposit">
+
+<strong>Customer ID</strong> : <input type="number" name="customer_id"> <br> <br>
+<strong>Account ID</strong> : <input type="number" name="account_id"> <br> <br>
+
+<strong>Account Type</strong> : <input type="radio" name="account_type" value="savings"> Savings
+							 <input type="radio" name="account_type" value="current"> Current <br> <br>
+<strong>Deposit</strong> : <input type="number" name="deposit_amt"> <br><br>
+<input type="submit" value="submit">
+
+</form>
+
+</body>
+</html>

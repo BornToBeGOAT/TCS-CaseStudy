@@ -22,7 +22,7 @@
       <a href="createcustomer.html">Create Customer</a>
       <a href="#">Update Customer</a>
       <a href="#">Delete Customer</a>
-      <a href="#">Search Customer</a>
+      <a href="searchcustomer.html">Search Customer</a>
     </div>
   </div>
  
@@ -69,15 +69,15 @@
  					<label class="required">Customer SSN ID:</label>
  				</td>
  				<td>
- 					<input type="number" id="SSN ID" name="SSN ID">
+ 					<input type="number" id="SSN ID" name="SSN ID" required>
  				</td>
  			</tr>
  			<tr>
  				<td>
- 					<label class="required">Customer SSN ID:</label>Customer Name:
+ 					<label class="required">Customer Name:</label>
  				</td>
  				<td>
- 					<input type="text" id="name" name="name">
+ 					<input type="text" id="name" name="name" required>
  				</td>
  			</tr>
  			<tr>
@@ -85,7 +85,7 @@
  					<label class="required">Age:</label>
  				</td>
  				<td>
- 					<input type="number" id="age" name="age">
+ 					<input type="number" id="age" name="age" required>
  				</td>
  			</tr>
  			<tr>
@@ -93,7 +93,7 @@
  					<label class="required">Address Line1:</label>
  				</td>
  				<td>
- 					<input type="text" id="address1" name="address1">
+ 					<input type="text" id="address1" name="address1" required>
  				</td>
  			</tr>
  			<tr>
@@ -111,7 +111,7 @@
  					<label class="required">State:</label>State:
  				</td>
  				<td>
- 				<select name="state" class="states" id="stateId" size="1">
+ 				<select name="state" class="states" id="stateId" size="1" required>
  					<option value="">------------Select State------------</option>
 					<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
 					<option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -158,7 +158,7 @@
  					<label class="required">City:</label>
  				</td>
  				<td>
- 				<select name="city" class="cities" id="cityId" size="1">
+ 				<select name="city" class="cities" id="cityId" size="1" required>
  					<option value="">------------Select State------------</option>
 					<option value="Adilabad">Adilabad</option>
 					<option value="Agra">Agra</option>
@@ -796,7 +796,6 @@
  		</table>
  	</form>
  	</div>
- 	
   </div>
 
 <div class="footer">

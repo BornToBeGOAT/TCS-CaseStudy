@@ -6,15 +6,16 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;;
 
 public class connection_util {
- private static final String url="jdbc:mysql://localhost:3306/retailbanking";
+ private static final String url="jdbc:mysql://localhost:3306/reatilbanking";
  private static final String username = "root";
  private static final String password ="root";
  
  public static Connection getConnection() {
 	Connection con = null;
 	try {
-	Class.forName(url);
+	Class.forName("com.mysql.jdbc.Driver");
 	con = DriverManager.getConnection(url,username,password);
+	//System.out.print("Connection Sucessful");
 	}
 	catch(ClassNotFoundException e)
 	{

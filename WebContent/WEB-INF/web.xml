@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>Retail Banking System</display-name>
-  
   <!-- Deposit -->
   <servlet>
   <servlet-name>deposit_controller</servlet-name>
@@ -14,4 +13,27 @@
   </servlet-mapping>
   
   <!-- Withdraw -->
+  <servlet>
+  <servlet-name>withdraw_controller</servlet-name>
+  <servlet-class>com.controller.WithDraw_controller</servlet-class> 
+  </servlet>
+
+  <servlet-mapping>
+  <servlet-name>withdraw_controller</servlet-name>
+  <url-pattern>/WithDraw_controller</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Transfer -->
+  
+  <servlet>
+  <servlet-name>transfer_controller</servlet-name>
+  <servlet-class>com.controller.Transfer_controller</servlet-class> 
+  </servlet>
+
+  <servlet-mapping>
+  <servlet-name>transfer_controller</servlet-name>
+  <url-pattern>/Transfer_controller</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

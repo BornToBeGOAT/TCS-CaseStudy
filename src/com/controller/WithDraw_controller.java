@@ -11,34 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model_class.Account_model;
-import com.service.Customer_Service;
 import com.service.Deposit_service;
+import com.service.WithDraw_service;
 
-public class Deposit_controller extends HttpServlet{
-
-	private static final long serialVersionUID = 1L;
+public class WithDraw_controller extends HttpServlet {
+private static final long serialVersionUID = 1L;
 	
-//	protected void doGet(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException
-//	{
-//		String source = request.getParameter("source");
-//		if(source.equalsIgnoreCase("deposit"))
-//		{
-//			response.sendRedirect("deposit.html");
-//		}
-//		
-//	}
+
 	protected void doPost(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException
 	{
 		String message = null;
-		Deposit_service d_service = new Deposit_service ();
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/deposit.html");
+		WithDraw_service w_service = new WithDraw_service();
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/withdraw.html");
 		PrintWriter out = response.getWriter();
 		String source = request.getParameter("source");
 		/// values///
 		int accnt_id =Integer.parseInt(request.getParameter("account_id"));
 		int cust_id =Integer.parseInt(request.getParameter("customer_id"));
 		String acc_type = request.getParameter("account_type");
-		int balance =Integer.parseInt(request.getParameter("deposit_amt"));
+		int balance =Integer.parseInt(request.getParameter("withdraw_amt"));
 		
 //		if(accnt_id==null || accnt_id==0 || Integer.SIZE!=11)
 //		{
@@ -66,7 +57,7 @@ public class Deposit_controller extends HttpServlet{
 //			rd.include(request, response);
 //			
 //		}
-		if(source.equalsIgnoreCase("deposit"))
+		if(source.equalsIgnoreCase("withdraw"))
 		{
 			Account_model acc_model = new Account_model();
 			acc_model.setAccount_id(accnt_id);
@@ -77,15 +68,20 @@ public class Deposit_controller extends HttpServlet{
 		//	System.out.println("acc details "+acc_model.getAccount_id());
 			
 			try {
-				boolean flag = d_service.Deposit_money(acc_model);
-				if(flag==true)
+				String msg = w_service.withdraw_money(acc_model);
+				if(msg.equalsIgnoreCase("sucess"))
 				{
-					out.println("<font color=red> Deposit SucessFull.</font>");
+					out.println("<font color=red> WithDrawl SucessFull.</font>");
+					rd.include(request, response);
+				}
+				else if(msg.equalsIgnoreCase("nobalance"))
+				{
+					out.println("<font color=red> Insufficient Balance for Withdrawl.</font>");
 					rd.include(request, response);
 				}
 				else
 				{
-					out.println("<font color=red>Some unknown error occured,Amount not Deposited.</font>");
+					out.println("<font color=red>Some unknown error occured,Amount not Withdrawed.</font>");
 					rd.include(request, response);
 				}
 			}catch(SQLException | ClassNotFoundException e) {
@@ -97,5 +93,4 @@ public class Deposit_controller extends HttpServlet{
 		
 		
 	}
-
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Transfer Money</title>
+</head>
+<body>
+<H1>Transfer Money</H1>
+<form  action="http://localhost:8080/Retail_Banking_System/Transfer_controller" method="post">
+<input type="hidden" name="source" value="transfer">
+
+<strong>Customer ID</strong> : <input type="number" name="customer_id"> <br> <br>
+
+<strong>Source Account Type</strong> : <input type="radio" name="source_account_type" value="savings"> Savings
+							 <input type="radio" name="source_account_type" value="current"> Current <br> <br>
+							 
+<strong>Target Account Type</strong> : <input type="radio" name="target_account_type" value="savings"> Savings
+							 <input type="radio" name="target_account_type" value="current"> Current <br> <br>
+							 							 
+<strong>Transfer Amount</strong> : <input type="number" name="transfer_amt"> <br><br>
+<input type="submit" value="submit">
+
+</form>
+
+</body>
+</html>

@@ -2,11 +2,12 @@
     pageEncoding="ISO-8859-1"%>
       <%@ page import="java.sql.*" %>
       <%@ page import="java.io.*" %>
-      <%@page import="java.util.ArrayList"%> 
-<%@page import="com.model_class.accountstatusmodel"%>
+      
+      <%@page import="java.util.ArrayList"%>      <%--Importing all the dependent classes--%>
+<%@page import="com.model_class.customerstatusmodel"%>
 <%@page import="java.util.Iterator"%> 
-      
-      
+
+
 	<%		
     	HttpSession ses = request.getSession(false);// don't create if it doesn't exist
     	if(ses != null && !ses.isNew()) {
@@ -15,7 +16,6 @@
     	    response.sendRedirect("/Login.jsp");
     	}
 	%>
-	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <html>
@@ -70,13 +70,13 @@
     <button class="dropbtn">Status Details
      </button>
     <div class="dropdown-content">
-      <a href="">Customer Status</a>
-      <a href="">Account Status</a>
-       <a href="Account_Statement">Account statement</a>
+      <a href="#">Customer Status</a>
+      <a href="account statement.jsp">Account Status</a>
+       <a href="#">Account statement</a>
     </div>
   </div>
  
-  <a href="logout.jsp">Log out</a>
+  <a href="#">Log out</a>
  </div>
  <br>
  <br>
@@ -108,13 +108,7 @@ th{
    color:black;
    
   }   
-  
-   button {
-  padding: 10px;
-  text-align: left;
-  background-color:yellow;
-  color: black;
-}
+   
 </style>
 </head>
 <body bgcolor="lightgray">
@@ -122,38 +116,38 @@ th{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankmanagementsystem", "root", "");
 	%>
-<center><h1>ACCOUNT STATUS</h1></center>
+	
+<center><h1>CUSTOMER STATUS</h1></center>
+
 <table align="center">
 <%
 try{
-	ArrayList<accountstatusmodel> accountstatusmodelData = (ArrayList)request.getAttribute("data");
+	ArrayList<customerstatusmodel> customerstatusmodelData = (ArrayList)request.getAttribute("data");
 	if(request.getAttribute("data") != null)  // Null check for the object
 	{
+		Iterator<customerstatusmodel> iterator = customerstatusmodelData.iterator();  // Iterator interface
 		%>
-	  <tr>
-          <th>Customer ID</th>
-          <th>Account ID</th>
-          <th>Account Type</th>
-          <th>Account Status</th>
-          <th>Message</th>
-          <th>Last Updated</th>      
-      	  <th>Operation</th>
-      </tr>
+	      <tr>
+            <th>Customer ID</th>
+            <th>Customer SSN ID</th>
+            <th>Status</th>
+            <th>Message</th>           
+            <th>Last Updated</th>      
+       		<th>Operation</th>
+            <th>View Profile</th>
+      	</tr>
       <%
-		Iterator<accountstatusmodel> iterator = accountstatusmodelData.iterator();  // Iterator interface
-		
 		while(iterator.hasNext())  // iterate through all the data until the last record
 		{
-			accountstatusmodel empDetails = iterator.next(); //assign individual employee record to the employee class object
+			customerstatusmodel empDetails = iterator.next(); //assign individual employee record to the employee class object
 		%>
 		<tr bgcolor="white">
 			<td><%=empDetails.getCustomerId()%></td>
-			<td><%=empDetails.getAccountId() %></td>
-			<td ><%=empDetails.getAccountType() %></td>
-			<td><%=empDetails.getAccountStatus() %></td>
+			<td><%=empDetails.getCustomerSSNId() %></td>
+			<td ><%=empDetails.getStatus() %></td>
 			<td><%=empDetails.getMessage() %></td>
 			<td><%=empDetails.getLastUpdated() %></td>
-			<td><%out.print("<center><a href='Accoun_Status'><h3>refresh</h3></a>"); %></td>
+			<td><%out.print("<center><a href='Customer_Status'><h3>refresh</h3></a>"); %></td>
 		</tr>
 
 		<%
@@ -161,10 +155,9 @@ try{
 	}else{
 		%>
 		
-	  <tr>
-          <td colspan="7">Account staus is not available</td>
-      </tr>
-		<%
+		<tr><td colspan="7"> User list is empty</td></tr>
+		
+		<% 
 		
 	}
 	
@@ -180,14 +173,6 @@ try{
 <br>
 <br>
 
-
-<center><button type="button" onClick="refreshPage()" >Refresh the List</button></center>
-<script>
-function refreshPage(){
-    window.location.reload();
-} 
-
-</script>
 
 <br>
 <br>

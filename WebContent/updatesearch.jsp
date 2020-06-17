@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +16,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
-  
+
 
 .header {
   padding: 10px;
@@ -87,7 +90,6 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .main {
  padding: 80px;
  background-color: lightgray;
@@ -110,25 +112,41 @@ body {
 	text-align:center;
 	
 }
+.main h4{
+	text-align:center;
+}
+.main p{
+	font-size:smaller;
+	text-align:right;
+}
 form { 
 	margin: 0 auto; 
 	width:400px;
+}
+.button{
+	text-align:center;
+}
+#view{
+	background-color:black;
+	color:white;
+	
 }
 
 </style>
 </head>
 <body>
+
 	<div class="header">
   <h1>FedChoice Bank</h1>
 </div>
 
 <div class="navbar">
-  <a href="#">Home</a>
+  <a href="index.html">Home</a>
   
   <div class="dropdown">
     <button class="dropbtn">Customer Management
      </button>
-   <div class="dropdown-content">
+    <div class="dropdown-content">
       <a href="createcustomer.jsp">Create Customer</a>
       <a href="updatesearch.jsp">Update Customer</a>
       <a href="deletesearch.jsp">Delete Customer</a>
@@ -150,9 +168,9 @@ form {
     <button class="dropbtn">Account Operations
      </button>
     <div class="dropdown-content">
-      <a href="deposit.html">Deposit Money</a>
-      <a href="withdraw.html">Withdraw Money</a>
-      <a href="transfer.html">Transfer Money</a>
+      <a href="#">Deposit Money</a>
+      <a href="#">Withdrawl Money</a>
+      <a href="#">Transfer Money</a>
     </div>
   </div>
   
@@ -169,12 +187,39 @@ form {
   <a href="#">Log out</a>
  </div>
  <div class="main">
- 	<h2>Home Page</h2>
- 	<div class="register">
- 		
- 	</div>
+ 	<h2>Search Customer</h2>
+ 	<p>*Enter one of the detail should be required</p>
+ 	<div class="search">
+ 		<form method="post" name= "Form" action="<%= request.getContextPath() %>/updatesearch"   >
+ 		<table>
+ 			<tr>
+ 				<td>
+ 					<label class="required">Enter SSN ID:</label>
+ 				</td>
+ 				<td>
+ 					<input type="number" id="Customer SSN ID" name="Customer SSN ID" value="0">
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required">Enter Customer ID:</label>
+ 				</td>
+ 				<td>
+ 					<input type="number" id="Customer ID" name="Customer ID" value="0">
+ 				</td>
+ 			</tr>
+		</table>
+			<br>
+			<br>
+			<div class=button>
+				<input type="submit" value="View" id="view" >
+			</div>
+			
+		</form>
+  	</div>
  	
   </div>
+
 
 <div class="footer">
   <h2 style="color:yellow">About Us</h2>
@@ -204,5 +249,7 @@ form {
 
 </div>
 
+	
 </body>
 </html>
+

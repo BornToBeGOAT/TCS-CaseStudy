@@ -1,3 +1,22 @@
+<%@page import="com.util.*"%>
+<%@page import="java.sql.*"%>
+<%
+int ssnid = Integer.parseInt(request.getParameter("Customer SSN ID"));
+int cid = Integer.parseInt(request.getParameter("Customer ID"));
+Connection conn=connection_util.getConnection();
+PreparedStatement ps = null;
+ResultSet rs = null;
+%>
+<%
+try{
+ps=conn.prepareStatement("SELECT *  FROM `customer_table` WHERE `Customer_ID` = ? OR `Customer_SSN_ID` = ?");
+ps.setInt(1,cid);
+ps.setInt(2,ssnid);
+rs=ps.executeQuery();
+
+
+while(rs.next()){
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +32,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
-  
+
 
 .header {
   padding: 10px;
@@ -87,7 +106,6 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .main {
  padding: 80px;
  background-color: lightgray;
@@ -110,10 +128,26 @@ body {
 	text-align:center;
 	
 }
+.main h4{
+	text-align:center;
+}
+.main p{
+	font-size:smaller;
+	text-align:right;
+}
 form { 
 	margin: 0 auto; 
 	width:400px;
 }
+.button{
+	text-align:center;
+}
+#view{
+	background-color:black;
+	color:white;
+	
+}
+
 
 </style>
 </head>
@@ -123,12 +157,12 @@ form {
 </div>
 
 <div class="navbar">
-  <a href="#">Home</a>
+  <a href="homepage.html">Home</a>
   
   <div class="dropdown">
     <button class="dropbtn">Customer Management
      </button>
-   <div class="dropdown-content">
+    <div class="dropdown-content">
       <a href="createcustomer.jsp">Create Customer</a>
       <a href="updatesearch.jsp">Update Customer</a>
       <a href="deletesearch.jsp">Delete Customer</a>
@@ -150,9 +184,9 @@ form {
     <button class="dropbtn">Account Operations
      </button>
     <div class="dropdown-content">
-      <a href="deposit.html">Deposit Money</a>
-      <a href="withdraw.html">Withdraw Money</a>
-      <a href="transfer.html">Transfer Money</a>
+      <a href="#">Deposit Money</a>
+      <a href="#">Withdrawl Money</a>
+      <a href="#">Transfer Money</a>
     </div>
   </div>
   
@@ -169,12 +203,101 @@ form {
   <a href="#">Log out</a>
  </div>
  <div class="main">
- 	<h2>Home Page</h2>
+ 	<h2>Update Customer</h2>
  	<div class="register">
- 		
- 	</div>
+ 	<form action="<%= request.getContextPath() %>/updatecustomer" method="post">
+ 	<table>
+ 			<tr>
+ 				<td>
+ 					<label class="required">Customer SSN ID:</label>
+ 				</td>
+ 				<td>
+ 					<%=rs.getString("Customer_SSN_ID") %>
+ 					</td>
+ 					<td>
+ 					<input type="hidden" name="Customer SSN ID" value=<%=rs.getString("Customer_SSN_ID") %>>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required">Customer ID:</label>
+ 				</td>
+ 				<td>
+ 					<%=rs.getString("Customer_ID") %>
+ 					</td>
+ 					<td>
+ 					<input type="hidden" name= "Customer ID" value=<%=rs.getString("Customer_ID") %>>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required"> Old Customer Name:</label>
+ 				</td>
+ 				<td>
+ 					<%=rs.getString("Customer_Name") %>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required">New Customer Name:</label>
+ 				</td>
+ 				<td>
+ 					<input type="text" name="name"  value="<%=rs.getString("Customer_Name") %>">
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required">Old Address Line1:</label>
+ 				</td>
+ 				<td>
+ 					<%=rs.getString("Address_Line1") %>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required">New Address Line1:</label>
+ 				</td>
+ 				<td>
+ 					<input type="text" name="address1"  value="<%=rs.getString("Address_Line1") %>">
+               </td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required">Old Address Line2:</label>
+ 				</td>
+ 				<td>
+ 					<%=rs.getString("Address_Line2") %>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required">New Address Line2:</label>
+ 				</td>
+ 				<td>
+ 					<input type="text" name="address2"  value="<%=rs.getString("Address_Line2") %>">
+               </td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required">Old Customer Age:</label>
+ 				</td>
+ 				<td>
+ 					<%=rs.getString("Age") %>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					<label class="required">New Customer Age:</label>
+ 				</td>
+ 				<td>
+ 					<input type="number" name="age"  value="<%=rs.getString("Age") %>">
+               </td>
+ 			</tr>
+ 		</table>
+ 		<br><br>
+ 			<input type=submit value=update>
+</form>
  	
-  </div>
 
 <div class="footer">
   <h2 style="color:yellow">About Us</h2>
@@ -206,3 +329,13 @@ form {
 
 </body>
 </html>
+<%
+}
+conn.close();
+} catch (Exception e) {
+e.printStackTrace();
+}
+%>
+</body>
+</html>
+>

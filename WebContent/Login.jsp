@@ -120,7 +120,7 @@ h2.loginheading{
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="LoginPage" method="post">
+  <form class="modal-content animate" action="Login" method="post">
 
     <div class="containerpsw" style="background-color:#f1f1f1">
       <h2 class="loginheading">LOGIN</h2>
